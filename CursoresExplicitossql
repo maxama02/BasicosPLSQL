@@ -1,0 +1,26 @@
+
+
+--select * from empleados;
+   
+set serveroutput on;
+
+DECLARE
+    nnombre nvarchar2(200);
+    ssalario number;
+    
+    CURSOR c_empleado is--se declara el cursor
+        select nombre, salario from empleados;-- se ingresa la consulta
+    
+BEGIN
+
+    OPEN c_empleado;
+    LOOP
+        FETCH c_empleado into nnombre,ssalario;
+        EXIT WHEN c_empleado%notfound;
+        
+        dbms_output.put_line(nnombre||' \ '||ssalario);
+        
+    END LOOP;
+    CLOSE c_empleado;
+END;
+/

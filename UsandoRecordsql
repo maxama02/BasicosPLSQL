@@ -1,0 +1,21 @@
+--select * from empleados;
+
+
+set serveroutput on;
+
+DECLARE
+
+    reg_empleados empleados%rowtype;
+
+BEGIN
+
+    select * into reg_empleados from empleados where id=5;
+    
+    dbms_output.put_line(reg_empleados.nombre);
+    dbms_output.put_line(reg_empleados.id);
+    dbms_output.put_line(reg_empleados.salario);
+    dbms_output.put_line(reg_empleados.actualizado);
+
+END;
+/
+

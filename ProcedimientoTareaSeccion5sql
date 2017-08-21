@@ -1,0 +1,13 @@
+set serveroutput on;
+
+Create or replace function promedio_notas (n1 number, n2 number, n3 number, n4 number )
+return number is 
+    p number:=0;
+BEGIN
+    p:=((n1+n2+n3+n4)/4);
+    --dbms_output.put_line('Dato: '||p);
+    --update notas set Promedio = p ;
+    --update notas set Promedio = ((n1+n2+n3+n4)/4) ;
+    return p;
+END;
+/

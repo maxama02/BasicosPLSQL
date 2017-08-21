@@ -1,0 +1,4 @@
+select a.FECHANACI from empleados a
+where EDAD_ACTUAL(a.FECHANACI)>=350;
+
+select a.FECHANACI, EDAD_ACTUAL(a.FECHANACI) from empleados a;

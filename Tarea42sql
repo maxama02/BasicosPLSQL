@@ -1,0 +1,43 @@
+--select * from empleados;
+
+set serveroutput on;
+
+DECLARE
+
+    /*nnombre nvarchar2(100);
+    ddiastrabajados number(2);
+    ssalario number(8,2);*/
+    
+    registro empleados%rowtype;
+
+    cursor c_empleados is
+    select * from empleados;
+    
+    PROCEDURE imprimeEmpleados(registro empleados%rowtype) is
+        salariodia number;
+    Begin
+        salariodia:=registro.salario/30;
+        
+        dbms_output.put_line('--------------------------');
+        dbms_output.put_line('Nombre empleado: '|| registro.nombre);
+        dbms_output.put_line('Salarios: '||round(salariodia,2));
+        dbms_output.put_line('Dias Trabajados: '||registro.diastrabajados);
+        dbms_output.put_line('Salario a Pagar: '||round(salariodia*registro.diastrabajados,2));
+        dbms_output.put_line('--------------------------');
+    End;
+
+BEGIN
+
+    OPEN c_empleados;
+    LOOP
+    
+    FETCH c_empleados into registro;--nnombre, ddiastrabajados,ssalario;
+    EXIT WHEN c_empleados%notfound;
+    
+    imprimeEmpleados(registro);
+
+    END LOOP;
+    CLOSE c_empleados;
+
+END;
+/

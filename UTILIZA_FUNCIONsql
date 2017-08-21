@@ -1,0 +1,11 @@
+SET SERVEROUTPUT ON;
+
+DECLARE
+    empleados number;
+
+BEGIN
+    empleados:= numero_empleados();
+    empleados:= numero_empleados();
+    dbms_output.put_line('Total empleados: ' || empleados);
+END;
+/

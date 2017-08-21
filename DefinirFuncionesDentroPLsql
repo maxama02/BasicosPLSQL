@@ -1,0 +1,26 @@
+
+set serveroutput on;
+
+DECLARE
+
+    salarioPromedio number:=0;
+    
+    --Obtener promedio
+    FUNCTION obtener_promedio
+    return number
+    IS
+        promedio number:=0;
+    BEGIN
+        Select avg(salario) into promedio from empleados;
+        
+        RETURN promedio;
+    END;
+    --Fin de la funcion promedio
+
+BEGIN--funcion principal
+    
+    salarioPromedio:=obtener_promedio();
+    dbms_output.put_line('El promedio es: '|| salarioPromedio);
+    
+END;--funcion principal
+/

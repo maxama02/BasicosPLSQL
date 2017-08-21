@@ -1,0 +1,9 @@
+select * from empleados;
+
+
+
+--EXECUTE hola_mundo();
+execute actualiza_fecha_empleados;
+
+
+
